@@ -1,6 +1,5 @@
 import 'package:crypto_tracker/core/di/di.dart';
 import 'package:crypto_tracker/core/presentation/styles/app_theme.dart';
-import 'package:crypto_tracker/features/crypto/presentation/crypto_list/crypto_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:go_router/go_router.dart';

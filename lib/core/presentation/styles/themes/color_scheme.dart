@@ -164,7 +164,6 @@ ColorScheme _mediumContrastDarkColorScheme = const ColorScheme(
   onErrorContainer: AppColors.onErrorContainerDarkMediumContrast,
   surface: AppColors.surfaceDarkMediumContrast,
   onSurface: AppColors.onSurfaceDarkMediumContrast,
-  surfaceVariant: AppColors.surfaceVariantDarkMediumContrast,
   onSurfaceVariant: AppColors.onSurfaceVariantDarkMediumContrast,
   outline: AppColors.outlineDarkMediumContrast,
   outlineVariant: AppColors.outlineVariantDarkMediumContrast,

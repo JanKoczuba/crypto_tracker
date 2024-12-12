@@ -41,25 +41,28 @@ class CoinListItem extends StatelessWidget {
             size: 85,
           ),
           AppSpacing.width8,
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                coin.symbol,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium
-                    ?.copyWith(color: contentColor),
-              ),
-              AppSpacing.height8,
-              Text(
-                coin.name,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: contentColor),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  coin.symbol,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineMedium
+                      ?.copyWith(color: contentColor),
+                ),
+                AppSpacing.height8,
+                Text(
+                  coin.name,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: contentColor),
+                ),
+              ],
+            ),
           ),
           const Spacer(),
           Column(

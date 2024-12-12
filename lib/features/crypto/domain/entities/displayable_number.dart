@@ -14,7 +14,8 @@ class DisplayableNumber {
 
 extension NumberParsingToDisplayable on double {
   DisplayableNumber formatCurrencyDouble() {
-    final formatter = NumberFormat.currency(decimalDigits: this > 10 ? 2 : 4, symbol: '\$');
+    final formatter =
+        NumberFormat.currency(decimalDigits: this > 10 ? 2 : 4, symbol: '\$');
     return DisplayableNumber(
       value: this,
       formatted: formatter.format(this),
@@ -22,9 +23,10 @@ extension NumberParsingToDisplayable on double {
   }
 
   DisplayableNumber formatPercentDouble() {
+    final formatter = NumberFormat.decimalPatternDigits(decimalDigits: 2);
     return DisplayableNumber(
       value: this,
-      formatted: '$this%',
+      formatted: '${formatter.format(this)}%',
     );
   }
 }

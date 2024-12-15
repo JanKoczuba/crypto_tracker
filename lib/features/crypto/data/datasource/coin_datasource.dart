@@ -11,7 +11,10 @@ abstract class CoinDatasource {
   factory CoinDatasource(Dio dio, {String baseUrl}) = _CoinDatasource;
 
   @GET('/assets')
-  Future<CoinsResponse> getCoinsData();
+  Future<CoinsResponse> getCoinsData({
+    @Query('limit') required int pageSize,
+    @Query('offset') required int page,
+  });
 }
 
 @module

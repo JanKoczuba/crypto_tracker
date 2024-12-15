@@ -1,9 +1,9 @@
-import 'package:collection/collection.dart';
 import 'package:crypto_tracker/core/app/type_aliases.dart';
 import 'package:crypto_tracker/core/data/api/repository_request_handler.dart';
 import 'package:crypto_tracker/features/crypto/data/datasource/coin_datasource.dart';
 import 'package:crypto_tracker/features/crypto/domain/entities/coin.dart';
 import 'package:crypto_tracker/features/crypto/domain/entities/displayable_number.dart';
+import 'package:crypto_tracker/features/crypto/domain/entities/page_list_request.dart';
 import 'package:crypto_tracker/features/crypto/domain/repository/coin_repository.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
@@ -18,8 +18,14 @@ class DataCoinRepository extends RepositoryRequestHandler
   final CoinDatasource _datasource;
 
   @override
-  FutureFailable<List<Coin>> getCoins() => makeRequest(request: () async {
-        final result = await _datasource.getCoinsData();
+  FutureFailable<List<Coin>> getCoins(
+    PageListRequest requestParams,
+  ) =>
+      makeRequest(request: () async {
+        final result = await _datasource.getCoinsData(
+          pageSize: requestParams.pageSize,
+          page: requestParams.page,
+        );
         return right(
           result.data
               .map((coin) => Coin(
@@ -31,8 +37,8 @@ class DataCoinRepository extends RepositoryRequestHandler
                         double.parse(coin.marketCapUsd).formatCurrencyDouble(),
                     priceUsd:
                         double.parse(coin.priceUsd).formatCurrencyDouble(),
-                    changePercent24Hr:
-                        double.parse(coin.changePercent24Hr).formatPercentDouble(),
+                    changePercent24Hr: double.parse(coin.changePercent24Hr)
+                        .formatPercentDouble(),
                   ))
               .toList(),
         );

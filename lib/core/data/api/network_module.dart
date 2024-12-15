@@ -5,7 +5,6 @@ import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:crypto_tracker/core/app/environment_config.dart';
 
-
 const mainDioName = "mainDio";
 const baseUrlName = "baseUrl";
 
@@ -17,8 +16,10 @@ abstract class NetworkModule {
 
   @LazySingleton()
   @Named(mainDioName)
-  Dio provideMainDio(@Named(baseUrlName) String baseUrl,
-      PrettyDioLogger logInterceptor,) {
+  Dio provideMainDio(
+    @Named(baseUrlName) String baseUrl,
+    PrettyDioLogger logInterceptor,
+  ) {
     final mainDio = Dio(BaseOptions(
       baseUrl: baseUrl,
     ));

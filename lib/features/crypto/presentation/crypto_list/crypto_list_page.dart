@@ -19,6 +19,7 @@ class _CryptoListPageState extends State<CryptoListPage> {
   @override
   void initState() {
     super.initState();
+
     cubit = sl<CryptoListCubit>()..getCoins();
     _controller.addListener(_pagination);
   }

@@ -2,7 +2,7 @@ import 'package:crypto_tracker/core/presentation/custom_svg_picture.dart';
 import 'package:crypto_tracker/core/presentation/styles/app_paddings.dart';
 import 'package:crypto_tracker/core/presentation/styles/app_spacing.dart';
 import 'package:crypto_tracker/features/crypto/domain/entities/coin.dart';
-import 'package:crypto_tracker/features/crypto/presentation/crypto_list/widgets/price_change_label.dart';
+import 'package:crypto_tracker/features/crypto/presentation/crypto_list/widgets/coin_value_column.dart';
 import 'package:crypto_tracker/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
@@ -65,21 +65,10 @@ class CoinListItem extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                coin.priceUsd.formatted,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: contentColor),
-              ),
-              AppSpacing.height8,
-              PriceChangeLabel(
-                change: coin.changePercent24Hr,
-              ),
-            ],
+          CoinValueColumn(
+            key: Key('CoinValueColumn${coin.rank}'),
+            contentColor: contentColor,
+            coin: coin,
           ),
         ],
       ),
